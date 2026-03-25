@@ -58,10 +58,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(compression());
 
 // Logging
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
-
 // Static files for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
