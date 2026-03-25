@@ -1,4 +1,5 @@
 const express = require('express');
+import morgan from "morgan";
 const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -57,7 +58,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(compression());
 
 // Logging
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
